@@ -24,4 +24,4 @@ COPY --from=builder /usr/local/sbin/dropbear /dropbear
 EXPOSE 22
 ENTRYPOINT ["/dropbear"]
 
-CMD ["-FREsk"]
+CMD ["-FRsk"]
