@@ -18,11 +18,11 @@ RUN make -j PROGRAMS="dropbear" install
 
 FROM scratch
 
-WORKDIR /etc
+WORKDIR /etc/dropbear
 COPY --from=builder /usr/local/sbin/dropbear /dropbear
 
-ENTRYPOINT ["/sbin/dropbear"]
+EXPOSE 22
+ENTRYPOINT ["/dropbear"]
 
 ENV WINDOWSIZE=24576
-
 CMD ["-F", "-E", "-s", "-k", "-W", ${WINDOWSIZE}]
