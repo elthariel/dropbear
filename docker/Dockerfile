@@ -2,7 +2,7 @@
 
 FROM alpine:latest AS builder
 
-RUN apk add --update alpine-sdk autoconf zlib-dev
+RUN apk add --update alpine-sdk autoconf zlib zlib-dev
 
 WORKDIR /usr/src/dropbear
 
@@ -24,5 +24,4 @@ COPY --from=builder /usr/local/sbin/dropbear /dropbear
 EXPOSE 22
 ENTRYPOINT ["/dropbear"]
 
-ENV WINDOWSIZE=24576
-CMD ["-F", "-E", "-s", "-k", "-W", ${WINDOWSIZE}]
+CMD ["-FREsk"]
